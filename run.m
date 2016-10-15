@@ -1,6 +1,6 @@
 % trainSet = 2;
 figure;
-maxFiles = 150;
+maxFiles = 36;
 for trainSet = 1:3
     h = waitbar(0,['training set ',num2str(trainSet)]);
     xs_0 = [];
@@ -34,8 +34,8 @@ for trainSet = 1:3
 
 %             res_0(iCh,:) = normalize(real(x_00).*imag(x_00)).*normalize(real(x_01).*imag(x_01));
 %             res_1(iCh,:) = normalize(real(x_10).*imag(x_10)).*normalize(real(x_11).*imag(x_11));
-            res_0(iCh,:) = abs(x_01).*abs(x_00);%(real(x_01).*imag(x_01));
-            res_1(iCh,:) = abs(x_11).*abs(x_10);%(real(x_11).*imag(x_11));
+            res_0(iCh,:) = (real(x_01).*imag(x_01));
+            res_1(iCh,:) = (real(x_11).*imag(x_11));
         end
         res_0 = mean(res_0,1);
         res_1 = mean(res_1,1);
