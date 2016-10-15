@@ -1,5 +1,6 @@
 submission = {};
-maxFiles = 5;
+maxFiles = [1584,2256,2286];
+% maxFiles = [5,5,5];
 lineCount = 1;
 for testSet = 1:3
     h = waitbar(0,['training set ',num2str(testSet)]);
@@ -8,13 +9,12 @@ for testSet = 1:3
     xs_1 = [];
     ys_1 = [];
     session = 1;
-    for iFile = 1:maxFiles
-        waitbar(iFile/maxFiles,h);
-        filePath = ['/Users/mattgaidica/Dropbox/Projects/Kaggle/train',num2str(testSet),'/',num2str(testSet),'_',num2str(iFile),'_0.mat'];
+    for iFile = 1:maxFiles(testSet)
+        waitbar(iFile/maxFiles(testSet),h);
+        filePath = ['C:\Users\admin\Downloads\test_',num2str(testSet),'\test_',num2str(testSet),'\',num2str(testSet),'_',num2str(iFile),'.mat'];
         load(filePath);
         data_0 = dataStruct.data;
 
-        curSeq = dataStruct.sequence;
         res_0 = [];
         for iCh=1:16
             fdata_00 = eegfilt(data_0(:,iCh)',400,50,100);
